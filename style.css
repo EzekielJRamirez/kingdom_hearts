@@ -1,0 +1,17 @@
+body {
+    background-color: #aaaaaa;
+}
+
+div {
+    width: 80%;
+    padding: 10px 30px;
+    margin: 20px auto;
+    border: 5px double #000088;
+    border-radius: 20px;
+    background-color: #888888;
+    
+}
+
+/* select {
+    background-color: #000000;
+} */
