@@ -14,7 +14,38 @@ const keyblades_kh1 = {
     "Spellbinder" : {Attack: 4, Magic:2, Size: 0, Block: 1},
     "Metal Chocobo" : {Attack: 9, Magic:-1, Size: 0, Block: 1},
     "Olympia" : {Attack: 10, Magic:0, Size: 0, Block: 1}
-};
+}
+
+// Populate dropdown dynamically
+function populateDropdown(dropdownId, data) {
+    const dropdown = document.getElementById(dropdownId);
+    dropdown.innerHTML = ""; // clear old options
+
+    Object.keys(data).forEach(item => {
+        const option = document.createElement("option");
+        option.value = item;   // match exactly with object key
+        option.textContent = item;
+        dropdown.appendChild(option);
+    });
+}
+
+// Update totals when a keyblade is selected
+function updateTotals() {
+    const dropdown = document.getElementById("keyblade");
+    const selectedItem = dropdown.value;
+    const stats = keyblades_kh1[selectedItem];
+
+    // Update each field
+    document.getElementById("strTotal").textContent = "Strength: " + stats.Attack;
+    document.getElementById("magicTotal").textContent = "Magic: " + stats.Magic;
+    // You can add Size/Block if you want
+}
+
+// Run on page load
+window.onload = function() {
+    populateDropdown("keyblade", keyblades_kh1);
+    document.getElementById("keyblade").addEventListener("change", updateTotals);
+}
 
 document.getElementById("armor1dropID").addEventListener("change", updateTotals);
 
@@ -23,12 +54,12 @@ document.getElementById("armor1dropID").addEventListener("change", updateTotals)
 const kb_kh2 = {
     "Kingdom Key" : {Attack: 1, Magic:0, Size: 0},
     "Kingdom Key" : {Attack: 1, Magic:0, Size: 0}
-};
+}
 
 const kb_kh3 = {
     "Kingdom Key" : {Attack: 1, Magic:0, Size: 0},
     "Kingdom Key" : {Attack: 1, Magic:0, Size: 0}
-};
+}
 
 
 
